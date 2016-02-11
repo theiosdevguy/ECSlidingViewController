@@ -62,9 +62,9 @@
         if (self.coordinatorAnimations) self.coordinatorAnimations((id<UIViewControllerTransitionCoordinatorContext>)transitionContext);
         topViewController.view.frame = topViewFinalFrame;
     } completion:^(BOOL finished) {
-        if ([transitionContext transitionWasCancelled]) {
-            topViewController.view.frame = [transitionContext initialFrameForViewController:topViewController];
-        }
+//        if ([transitionContext transitionWasCancelled]) {
+//            topViewController.view.frame = [transitionContext initialFrameForViewController:topViewController];
+//        }
         
         if (self.coordinatorCompletion) self.coordinatorCompletion((id<UIViewControllerTransitionCoordinatorContext>)transitionContext);
         [transitionContext completeTransition:finished];

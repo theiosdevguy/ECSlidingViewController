@@ -133,6 +133,8 @@
                                              format:@"Set the topViewController before loading ECSlidingViewController"];
     self.topViewController.view.frame = [self topViewCalculatedFrameForPosition:self.currentTopViewPosition];
     [self.view addSubview:self.topViewController.view];
+    
+    [[self containerView] insertSubview:_underLeftViewController.view belowSubview:_topViewController.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -458,7 +460,10 @@
                                                         topViewPosition:position];
     if (!CGRectIsInfinite(frameFromDelegate)) return frameFromDelegate;
     
-    CGRect containerViewFrame = self.view.bounds;
+    CGRect bounds = self.view.bounds;
+    bounds.origin.x += 44;
+    bounds.size.width -= 44;
+    CGRect containerViewFrame = bounds;
     
     if (!(self.topViewController.edgesForExtendedLayout & UIRectEdgeTop)) {
         CGFloat topLayoutGuideLength = [self.topLayoutGuide length];
@@ -813,6 +818,9 @@
 
 - (void)cancelInteractiveTransition {
     _transitionWasCancelled = YES;
+    
+    [self.topViewController.view.layer removeAllAnimations];
+    self.topViewController.view.frame = [self initialFrameForViewController:self.topViewController];
 }
 
 - (void)completeTransition:(BOOL)didComplete {
