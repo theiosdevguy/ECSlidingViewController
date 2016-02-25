@@ -327,6 +327,7 @@
 }
 
 - (void)setDefaultTransitionDuration:(NSTimeInterval)defaultTransitionDuration {
+    _defaultTransitionDuration = defaultTransitionDuration;
     self.defaultAnimationController.defaultTransitionDuration = defaultTransitionDuration;
 }
 
