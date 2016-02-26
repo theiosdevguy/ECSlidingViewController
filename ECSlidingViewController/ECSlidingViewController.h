@@ -303,4 +303,9 @@
  */
 @property (nonatomic, assign) NSTimeInterval defaultTransitionDuration;
 
+/**
+ The default duration of the view transition.
+ */
+@property (nonatomic) CGFloat openAreaWidth;
+
 @end

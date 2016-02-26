@@ -107,6 +107,7 @@
 - (void)setup {
     self.anchorLeftPeekAmount    = 44;
     self.anchorRightRevealAmount = 276;
+    self.openAreaWidth = 44;
     _currentTopViewPosition = ECSlidingViewControllerTopViewPositionCentered;
     self.transitionInProgress = NO;
 }
@@ -462,8 +463,8 @@
     if (!CGRectIsInfinite(frameFromDelegate)) return frameFromDelegate;
     
     CGRect bounds = self.view.bounds;
-    bounds.origin.x += 44;
-    bounds.size.width -= 44;
+    bounds.origin.x += _openAreaWidth;
+    bounds.size.width -= _openAreaWidth;
     CGRect containerViewFrame = bounds;
     
     if (!(self.topViewController.edgesForExtendedLayout & UIRectEdgeTop)) {
