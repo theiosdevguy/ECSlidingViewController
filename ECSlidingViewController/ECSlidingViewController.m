@@ -463,8 +463,16 @@
     if (!CGRectIsInfinite(frameFromDelegate)) return frameFromDelegate;
     
     CGRect bounds = self.view.bounds;
-    bounds.origin.x += _openAreaWidth;
-    bounds.size.width -= _openAreaWidth;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        bounds.origin.y += _openAreaWidth;
+        bounds.size.height -= _openAreaWidth;
+    }
+    else {
+        bounds.origin.x += _openAreaWidth;
+        bounds.size.width -= _openAreaWidth;
+    }
+
     CGRect containerViewFrame = bounds;
     
     if (!(self.topViewController.edgesForExtendedLayout & UIRectEdgeTop)) {
